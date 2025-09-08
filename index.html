@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Green Earth</title>
-    <!-- tailwind and dayui cdn -->
+    <!-- tailwind and dasyui cdn -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
@@ -62,11 +62,81 @@
             <img src="./assets/hero-leaf2.png" alt="">
         </div>
     </section>
+    <!-- Campaign section -->
+    <section class="py-12">
+        <h2 class="text-3xl font-bold text-center mb-6">About the Campaign</h2>
 
+        <div class="flex items-center justify-center gap-4">
+            <div class="left-img">
+                <img src="./assets/about.png" alt="" class="rounded-lg shadow-lg">
+            </div>
+            <div class="right-content w-1/2">
+                <p class="mb-4">
+                    Green Earth is a global tree plantation initiative dedicated to fighting climate change. Since our
+                    start,
+                    we’ve planted over 500,000 trees worldwide. By joining our campaign, you help restore forests,
+                    create
+                    habitats for wildlife, and combat global warming.
+                </p>
+                <ul class="list-disc pl-5 space-y-2">
+                    <li>Restoration of natural habitats</li>
+                    <li>Improvement of air quality</li>
+                    <li>Support for local communities</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- impact section  -->
+    <section class="py-12 bg-gray-300">
+        <h2 class="text-3xl font-bold text-center mb-8">Our Impact</h2>
 
+        <div class="flex justify-center items-center gap-16 text-center">
+            <div class="left-content">
+                <h3 class="text-4xl font-bold text-green-600">500K+</h3>
+                <p class="text-lg">Trees Planted</p>
+            </div>
+            <div class="middle-content">
+                <h3 class="text-4xl font-bold text-green-600">120+</h3>
+                <p class="text-lg">Communities Involved</p>
+            </div>
+            <div class="right-content">
+                <h3 class="text-4xl font-bold text-green-600">30+</h3>
+                <p class="text-lg">Countries Reached</p>
+            </div>
+        </div>
+    </section>
+    <!-- form  -->
+    <section class="bg-green-800 py-12 flex flex-col items-center">
+        <!-- title -->
+        <h2 class="text-2xl font-semibold text-white text-center mb-6">
+            Plant a Tree Today
+        </h2>
+        <!-- form card  -->
+        <div class="bg-green-700 p-8 rounded-xl shadow-lg w-full max-w-md">
+            <form action="" class="space-y-4">
+                <input type="text" placeholder="Your Name"
+                    class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none bg-white" />
 
+                <input type="email" placeholder="Your Email Address" required
+                    class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none bg-white" />
 
+                <select required class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none bg-white">
+                    <option disabled selected value="">Number of Trees</option>
+                    <option>2 Trees</option>
+                    <option>3 Trees</option>
+                    <option>5 Trees</option>
+                </select>
 
+                <button type="submit"
+                    class="w-full bg-yellow-400 text-green-700 font-bold py-3 rounded-lg hover:bg-yellow-500 transition">
+                    Donate Now
+                </button>
+            </form>
+        </div>
+    </section>
+    <footer class="bg-green-500 py-4">
+        <p class="text-center text-white">© 2025 Green Earth. All Rights Reserved.</p>
+    </footer>
 </body>
 
 </html>
