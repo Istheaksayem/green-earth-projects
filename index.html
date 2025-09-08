@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Earth</title>
+    <!-- tailwind and dayui cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+    <!-- navber -->
+    <div class="navbar bg-green-500 shadow-sm ">
+        <div class="navbar-start">
+            <div class="dropdown">
+                <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h8m-8 6h16" />
+                    </svg>
+                </div>
+                <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                    <li><a>About</a></li>
+                    <li>
+                        <a>Gallery</a>
+                    </li>
+                    <li><a>Plant a tree</a></li>
+                </ul>
+            </div>
+            <a class="btn btn-ghost text-xl text-white">Green Earth</a>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+            <ul class="menu menu-horizontal px-1">
+                <li><a class="text-white">About</a></li>
+                <li>
+                    <a class="text-white">Gallery</a>
+                </li>
+                <li><a class="text-white">Plant a tree</a></li>
+            </ul>
+        </div>
+        <div class="navbar-end">
+            <a class="btn bg-yellow-400 text-green-600 rounded-lg">Plant a Tree</a>
+        </div>
+    </div>
+    <!-- banner section -->
+    <section class="flex bg-gray-300 items-center justify-center">
+        <div class="left-image">
+            <img src="./assets/hero-leaf1.png" alt="">
+        </div>
+        <div class="text-center">
+            <h1 class="text-4xl font-bold">Plant a Tree, Grow a Future</h1>
+            <p>Join our mission to plant 1 million trees and make the Earth greener for future
+                generations.</p>
+            <a class="btn bg-yellow-400 text-green-600 rounded-lg mt-3 inline-block px-6 py-2 font-semibold">
+                Get Involved
+            </a>
+        </div>
+        <div class="right-image">
+            <img src="./assets/hero-leaf2.png" alt="">
+        </div>
+    </section>
+
+
+
+
+
+</body>
+
+</html>
