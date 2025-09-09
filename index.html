@@ -46,11 +46,11 @@
         </div>
     </div>
     <!-- banner section -->
-    <section class="flex bg-gray-300 items-center justify-center">
-        <div class="left-image">
-            <img src="./assets/hero-leaf1.png" alt="">
+    <section class="flex flex-col md:flex-row bg-gray-300 items-center justify-center">
+        <div class="left-image"> 
+            <img src="./assets/hero-leaf1.png"  alt="">
         </div>
-        <div class="text-center">
+        <div class="text-center md:w-1/2">
             <h1 class="text-4xl font-bold">Plant a Tree, Grow a Future</h1>
             <p>Join our mission to plant 1 million trees and make the Earth greener for future
                 generations.</p>
@@ -62,8 +62,13 @@
             <img src="./assets/hero-leaf2.png" alt="">
         </div>
     </section>
+    <!-- title  -->
+       <div>
+        <h2 class="text-3xl text-center font-semibold">Choose Your Trees</h2>
+       </div>
         <section class="w-11/12 mx-auto my-10 flex gap-6">
         <!-- Categories Section -->
+        
         <div class="w-1/6">
             <h2 class="text-xl font-bold mb-3">Categories</h2>
             <div id="categori-container" class="flex flex-col gap-2">
@@ -73,37 +78,24 @@
 
         <!-- Plants Cards Section -->
         <div class="w-2/3" id="word-container">
-            <!-- Cards loaded by JS -->
+    
         </div>
 
         <!-- Your Cart Section -->
         <div class="w-1/6">
-            <h2 class="text-xl font-bold mb-3">🛒 Your Cart</h2>
-            <div id="cart-container" class="bg-gray-100 p-4 rounded-lg shadow-md">
-                <p class="text-gray-500">Your cart is empty!</p>
+            <h2 class="text-xl font-bold mb-3">Your Cart</h2>
+            <div id="cart-container" class="bg-gray-100 p-4 rounded-lg shadow-md h-full">
+                
             </div>
         </div>
     </section>
     <!-- Your trees  -->
-    <section>
-        <h2 class="text-3xl text-center font-bold">Choose Your Trees</h2>
-        <div id="categori-container">
-
+    <section  class="bg-gray-100 p-10 w-11/12 mx-auto my-10">
+          <div id="spinner" class="flex justify-center items-center py-10 ">
+            <span class="loading loading-spinner loading-lg text-green-600"></span>
         </div>
-    </section>
-    <section id="word-container" class="bg-gray-100 p-10 w-11/12 mx-auto my-10">
+       
 </section>
-
-<!-- Your Cart Section -->
-<section class="p-6 w-11/12 mx-auto">
-  <h2 class="text-2xl font-bold mb-4">Your Cart</h2>
-  <div id="cart-container" class="bg-gray-100 p-4 rounded-lg shadow-md">
-  
-  </div>
-</section>
-
-
-    
     <!-- Campaign section -->
     <section class="py-12">
         <h2 class="text-3xl font-bold text-center mb-6">About the Campaign</h2>

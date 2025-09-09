@@ -1,10 +1,13 @@
-// Load All Categories
+// Spinner Handle
+
+
+// Load All Categories 
 const loadCategories = () => {
     fetch("https://openapi.programming-hero.com/api/categories")
         .then(res => res.json())
         .then(json => displayCategories(json.categories))
         .catch(err => console.error(err));
-}
+};
 
 // Display Categories as Buttons
 const displayCategories = (categories) => {
@@ -12,33 +15,45 @@ const displayCategories = (categories) => {
     categoriContainer.innerHTML = "";
 
     categories.forEach(category => {
-        const btnDiv = document.createElement("div");
-        btnDiv.innerHTML = `
-            <button 
-                onclick="loadPlantsByCategory(${category.id})" 
-                class="btn m-2 rounded-lg">
-                ${category.category_name}
-            </button>
-        `;
-        categoriContainer.appendChild(btnDiv);
+        const btn = document.createElement("button");
+        btn.innerText = category.category_name;
+        btn.className = "btn m-2 rounded-lg";
+        btn.onclick = () => {
+            // Active State
+            document.querySelectorAll("#categori-container button")
+                .forEach(b => b.classList.remove("bg-green-500", "text-white"));
+            btn.classList.add("bg-green-500", "text-white");
+
+            loadPlantsByCategory(category.id);
+        };
+        categoriContainer.appendChild(btn);
     });
-}
+};
 
 // Load All Plants
 const loadAllPlants = () => {
+    
     fetch("https://openapi.programming-hero.com/api/plants")
         .then(res => res.json())
         .then(json => displayPlants(json.plants))
         .catch(err => console.error(err));
-}
+};
 
 // Load Plants by Category ID
 const loadPlantsByCategory = (categoryId) => {
+    
     fetch(`https://openapi.programming-hero.com/api/category/${categoryId}`)
         .then(res => res.json())
-        .then(json => displayPlants(json.plants))
+        .then(json => {
+        
+            if (json.plants) {
+                displayPlants(json.plants);
+                document.getElementById("spinner").style.display="flex"
+                document.getElementById("word-container").style.display="none"
+            } 
+        })
         .catch(err => console.error(err));
-}
+};
 
 // Display Plants in Grid
 const displayPlants = (plants) => {
@@ -61,32 +76,42 @@ const displayPlants = (plants) => {
             <h3 class="text-xl font-bold">${plant.name}</h3>
             <p class="text-gray-600">${plant.description.slice(0, 100)}...</p>
             <div class="flex justify-between font-bold items-center w-full">
-              <p class="font-semibold mt-2 bg-green-100 rounded-lg text-green-500"> ${plant.category}</p>
-            <p class="font-semibold mt-2">Price: ${plant.price}</p>
-            
+                <p class="font-semibold mt-2 bg-green-100 rounded-lg text-green-500">${plant.category}</p>
+                <p class="font-semibold mt-2">Price: $${plant.price}</p>
             </div>
             <button 
-            onclick="loadPlantDetail(${plant.id}), '${plant.name}', '${plant.price}'" 
-                class="btn mt-3 bg-green-400 text-white rounded-lg w-full ">
+                onclick="addToCart(${plant.id}, '${plant.name}', ${plant.price})" 
+                class="btn mt-3 bg-green-400 text-white rounded-lg justify-between text-center w-full">
                 Add to Cart
             </button>
-         
         `;
         gridDiv.appendChild(card);
     });
 
     wordContainer.appendChild(gridDiv);
-}
-//  Cart System
-let cart = []; 
+    setTimeout(()=>{
+        document.getElementById("spinner").style.display="none"
+       document.getElementById("word-container").style.display="block"
+    },3000)
+    
+};
 
-// Add to Cart Function
+// Cart System
+let cart = [];
+
+// Add to Cart
 const addToCart = (id, name, price) => {
     cart.push({ id, name, price });
     displayCart();
 };
 
-// Display Cart Function
+// Remove from Cart
+const removeFromCart = (index) => {
+    cart.splice(index, 1); 
+    displayCart();
+};
+
+// Display Cart
 const displayCart = () => {
     const cartContainer = document.getElementById("cart-container");
     cartContainer.innerHTML = "";
@@ -97,19 +122,20 @@ const displayCart = () => {
     }
 
     let total = 0;
-
-    cart.forEach(item => {
+    cart.forEach((item, index) => {
         total += item.price;
         const div = document.createElement("div");
         div.className = "flex justify-between items-center bg-white p-2 mb-2 rounded-lg shadow";
         div.innerHTML = `
             <span>${item.name}</span>
-            <span class="font-semibold">$${item.price}</span>
+            <div class="flex items-center gap-2">
+                <span class="font-semibold">$${item.price}</span>
+                <button onclick="removeFromCart(${index})" class="text-red-500 font-bold">❌</button>
+            </div>
         `;
         cartContainer.appendChild(div);
     });
 
-    // Total 
     const totalDiv = document.createElement("div");
     totalDiv.className = "mt-4 font-bold text-lg flex justify-between";
     totalDiv.innerHTML = `
@@ -118,30 +144,6 @@ const displayCart = () => {
     `;
     cartContainer.appendChild(totalDiv);
 };
-
-// Load Single Plant Detail
-const loadPlantDetail = (plantId) => {
-    fetch(`https://openapi.programming-hero.com/api/plant/${plantId}`)
-        .then(res => res.json())
-        .then(json => showPlantDetail(json.plant))
-        .catch(err => console.error(err));
-}
-
-// Show Plant Detail
-const showPlantDetail = (plant) => {
-    const wordContainer = document.getElementById("word-container");
-    wordContainer.innerHTML = `
-        <div class="card bg-white shadow-lg p-6 text-center mx-auto max-w-md">
-            <h2 class="text-2xl font-bold mb-2">${plant.name}</h2>
-            <img src="${plant.image}" alt="${plant.name}" class="w-64 h-64 object-cover mx-auto rounded-lg mb-4"/>
-            <p class="mb-3">${plant.description}</p>
-            <p class="font-semibold">Price: $${plant.price}</p>
-            <button onclick="loadAllPlants()" class="btn mt-4 bg-green-500 text-white rounded-lg">
-                Back to Plants
-            </button>
-        </div>
-    `;
-}
 
 // Initial Calls
 loadCategories();
