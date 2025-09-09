@@ -96,6 +96,7 @@ const displayPlants = (plants) => {
     
 };
 
+
 // Cart System
 let cart = [];
 
